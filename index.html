@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horaires Navette Frioul 🚢</title>
+  <link rel="stylesheet" type="text/css" href="/style.css" media="screen" />
+</head>
+
+<h1>Horaires Navette Frioul</h1>
+
+<p style="display: flex;">
+  <span>
+    <a href="javascript:changeDateBy(-1);">< précédent</a>
+  </span>
+  <span id="title-date" style="margin: 0 2rem;"></span>
+  <span>
+    <a href="javascript:changeDateBy(+1);">suivant ></a>
+  </span>
+</p>
+
+<table id="times" style="width: auto; min-width: 350px;">
+  <thead>
+    <tr>
+      <th title="Vieux-Port → Frioul">Aller</th>
+      <th title="Frioul → Vieux-Port">Retour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><ul id="times-from-vieux-port"></ul></td>
+      <td><ul id="times-from-frioul"></ul></td>
+    </tr>
+  </tbody>
+</table>
+
+<script src="/main.js"></script>
+<script>
+  const currentDate = new Date()
+  let schedules = null;
+  const setDate = date => {
+    document.getElementById("title-date").innerHTML = dateToStrFR(date)
+    const schedule = getScheduleForDate(schedules, date)
+    const mappings = [
+    ["Vieux-Port vers Frioul", "#times-from-vieux-port"],
+    ["Frioul vers Vieux-Port", "#times-from-frioul"]
+    ]
+    mappings.forEach(([key, sel]) => {
+      const times = schedule.times[key]
+      const timesHTML = times.map(t => `<li>${t}</li>`).join("\n")
+      document.querySelector(sel).innerHTML = timesHTML
+      if (datesEqual(new Date(), date)) {
+        const nextIdx = getFirstNextTimeIdx(times, date)
+        const li = document.querySelector(`${sel} li:nth-child(${nextIdx + 1})`)
+        li.innerHTML = `<mark>${li.innerHTML}</mark>`
+      }
+    })
+  }
+
+  fetch("./schedules.json")
+    .then(r => r.text())
+    .then(rawSchedulesText => {
+      schedules = parseSchedules(rawSchedulesText)
+      setDate(currentDate)
+  })
+
+  const changeDateBy = (inc) => {
+    currentDate.setDate(currentDate.getDate() + inc)
+    setDate(currentDate)
+  }
+</script>
+
+<style>
+  #times ul{
+    list-style-type: none;
+    padding: 0;
+  }
+</style>
+
+<body>

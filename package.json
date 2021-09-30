@@ -1,0 +1,13 @@
+{
+  "type": "module",
+  "name": "frioul",
+  "version": "0.0.1",
+  "description": "Horaires de la navette Marseille Vieux-Port ↔ Frioul",
+  "main": "main.js",
+  "scripts": {
+    "test": "node tests.js"
+  },
+  "author": "Adrien Di Pasquale",
+  "license": "MIT",
+  "devDependencies": {}
+}
