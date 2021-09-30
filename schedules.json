@@ -18,8 +18,8 @@
         "days": "all"
       }
     ],
-    "times": {
-      "Vieux-Port vers Frioul": [
+    "times": [
+      [
         "06h30",
         "07h40",
         "08h45",
@@ -39,7 +39,7 @@
         "19h20",
         "20h30"
       ],
-      "Frioul vers Vieux-Port": [
+      [
         "07h05",
         "08h10",
         "09h15",
@@ -59,7 +59,7 @@
         "19h50",
         "21h00"
       ]
-    }
+    ]
   },
   {
     "name": "Service réduit",
@@ -76,8 +76,8 @@
         "days": "all"
       }
     ],
-    "times": {
-      "Vieux-Port vers Frioul": [
+    "times": [
+      [
         "06h30",
         "07h40",
         "08h45",
@@ -91,7 +91,7 @@
         "19h20",
         "20h30"
       ],
-      "Frioul vers Vieux-Port": [
+      [
         "07h05",
         "08h10",
         "09h15",
@@ -105,6 +105,6 @@
         "19h50",
         "21h00"
       ]
-    }
+    ]
   }
 ]

@@ -10,17 +10,19 @@
 </head>
 
 <body style="max-width: 350px">
-  <h1 style="text-align: center;">🚢 Horaires Frioul</h1>
+  <header style="text-align: center;">
+    <h1>🚢 Horaires Frioul</h1>
 
-  <p style="display: flex; align-items: flex-end;">
-    <span>
-      <a href="javascript:changeDateBy(-1);">< -1 jour</a>
-    </span>
-    <span id="title-date" style="flex: 1; margin: 0 2rem;"></span>
-    <span>
-      <a href="javascript:changeDateBy(+1);">+1 jour ></a>
-    </span>
-  </p>
+    <p style="display: flex; align-items: flex-end;">
+      <span>
+        <a href="javascript:changeDateBy(-1);">< -1 jour</a>
+      </span>
+      <span id="title-date" style="flex: 1; margin: 0 2rem;"></span>
+      <span>
+        <a href="javascript:changeDateBy(+1);">+1 jour ></a>
+      </span>
+    </p>
+  </header>
 
   <table id="times">
     <thead>
@@ -29,12 +31,7 @@
         <th title="Frioul → Vieux-Port">Retour</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td><ul id="times-from-vieux-port"></ul></td>
-        <td><ul id="times-from-frioul"></ul></td>
-      </tr>
-    </tbody>
+    <tbody></tbody>
   </table>
 </body>
 
@@ -42,23 +39,27 @@
 <script>
   const currentDate = new Date()
   let schedules = null;
+  const tbody = document.querySelector("#times tbody")
   const setDate = date => {
     document.getElementById("title-date").innerHTML = dateToStrFR(date)
     const schedule = getScheduleForDate(schedules, date)
-    const mappings = [
-    ["Vieux-Port vers Frioul", "#times-from-vieux-port"],
-    ["Frioul vers Vieux-Port", "#times-from-frioul"]
-    ]
-    mappings.forEach(([key, sel]) => {
-      const times = schedule.times[key]
-      const timesHTML = times.map(t => `<li>${t}</li>`).join("\n")
-      document.querySelector(sel).innerHTML = timesHTML
-      if (datesEqual(new Date(), date)) {
-        const nextIdx = getFirstNextTimeIdx(times, date)
-        const li = document.querySelector(`${sel} li:nth-child(${nextIdx + 1})`)
-        li.innerHTML = `<mark>${li.innerHTML}</mark>`
+    const maxLength = Math.max(...schedule.times.map(t => t.length))
+    const nextIndexes = schedule.times.map(t => getFirstNextTimeIdx(t, date))
+    const isToday = datesEqual(new Date(), date)
+    tbody.innerHTML = ""
+    for(let i=0; i < maxLength; i++) {
+      if (isToday && i < nextIndexes[0] && i < nextIndexes[1]) {
+        if (tbody.innerHTML == "") {
+          tbody.innerHTML = "<tr><td>...</td><td>...</td></tr>"
+        }
+        continue
       }
-    })
+      const cellsHTML = schedule.times
+        .map(times => times[i] || "")
+        .map((time, ii) => (isToday && i == nextIndexes[ii]) ? `<mark>${time}</mark>` : time)
+        .map(time => `<td>${time}</td>`).join("\n")
+      tbody.innerHTML += `<tr>${cellsHTML}</tr>`
+    }
   }
 
   fetch("./schedules.json")
@@ -74,11 +75,15 @@
   }
 </script>
 
-<style>
-  #times ul{
-    list-style-type: none;
-    padding: 0;
-  }
-</style>
+<hr style="margin-top: 60px;" />
+
+<small style="font-style: italic;">
+  <p>
+    Ce site présente les horaires de la navette du Frioul dans un format plus lisible
+  </p>
+  <a href="https://lebateau-frioul-if.fr/horaires">Site Officiel Le Bateau ↗</a>
+  ·
+  <a href="https://github.com/adipasquale/frioul">Code Source sur GitHub ↗</a>
+</small>
 
 <body>
