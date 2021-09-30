@@ -1,8 +1,3 @@
-
-const fetchTimes = () => {
-
-}
-
 const parseDate = (dateStr) => {
   const s = dateStr.split("/")
   return new Date(`${s[2]}-${s[1]}-${s[0]}`) // regular constructor uses month indexes 🤷
@@ -53,4 +48,4 @@ const datesEqual = (d1, d2) => d1.getDate() == d2.getDate() &&
   d1.getMonth() == d2.getMonth() &&
   d1.getYear() == d2.getYear()
 
-// export { parseSchedules, getScheduleForDate, parseDate, getFirstNextTimeIdx, dateToStrFR }
+export { parseSchedules, getScheduleForDate, parseDate, getFirstNextTimeIdx, dateToStrFR, datesEqual }
