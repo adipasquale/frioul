@@ -36,7 +36,12 @@ fetch("./schedules.json")
     setDate(currentDate)
 })
 
-const changeDateBy = (inc) => {
-  currentDate.setDate(currentDate.getDate() + inc)
-  setDate(currentDate)
-}
+document.querySelectorAll(".js-change-date").forEach(elt =>
+  elt.addEventListener("click", (e) => {
+    e.preventDefault()
+    const inc = parseInt(elt.getAttribute("data-by"), 10)
+    currentDate.setDate(currentDate.getDate() + inc)
+    setDate(currentDate)
+    return false
+  })
+)
