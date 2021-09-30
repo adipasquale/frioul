@@ -4,36 +4,39 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Horaires Navette Frioul 🚢</title>
+  <title>Horaires Navette Frioul</title>
   <link rel="stylesheet" type="text/css" href="./style.css" media="screen" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚢</text></svg>">
 </head>
 
-<h1>Horaires Navette Frioul</h1>
+<body style="max-width: 350px">
+  <h1 style="text-align: center;">🚢 Horaires Frioul</h1>
 
-<p style="display: flex;">
-  <span>
-    <a href="javascript:changeDateBy(-1);">< précédent</a>
-  </span>
-  <span id="title-date" style="margin: 0 2rem;"></span>
-  <span>
-    <a href="javascript:changeDateBy(+1);">suivant ></a>
-  </span>
-</p>
+  <p style="display: flex; align-items: flex-end;">
+    <span>
+      <a href="javascript:changeDateBy(-1);">< -1 jour</a>
+    </span>
+    <span id="title-date" style="flex: 1; margin: 0 2rem; font-size: 1.2rem;"></span>
+    <span>
+      <a href="javascript:changeDateBy(+1);">+1 jour ></a>
+    </span>
+  </p>
 
-<table id="times" style="width: auto; min-width: 350px;">
-  <thead>
-    <tr>
-      <th title="Vieux-Port → Frioul">Aller</th>
-      <th title="Frioul → Vieux-Port">Retour</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><ul id="times-from-vieux-port"></ul></td>
-      <td><ul id="times-from-frioul"></ul></td>
-    </tr>
-  </tbody>
-</table>
+  <table id="times">
+    <thead>
+      <tr>
+        <th title="Vieux-Port → Frioul">Aller</th>
+        <th title="Frioul → Vieux-Port">Retour</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><ul id="times-from-vieux-port"></ul></td>
+        <td><ul id="times-from-frioul"></ul></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
 
 <script src="./main.js"></script>
 <script>
