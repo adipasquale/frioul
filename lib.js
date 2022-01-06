@@ -27,7 +27,7 @@ const getScheduleForDate = (schedules, date) =>
   )
 
 const timeStrIsAfterDate = (timeStr, date) => {
-  const [hour, minutes] = timeStr.split("h").map(i => parseInt(i, 10))
+  const [hour, minutes] = timeStr.split(" ")[0].split("h").map(i => parseInt(i, 10))
   return (hour == date.getHours()  && minutes >= date.getMinutes()) ||
           hour > date.getHours()
 }
@@ -41,7 +41,7 @@ const pad = n => n <= 9 ? `0${n}` : n
 
 const dateToStrFR = date => {
   const d = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"]
-  return `${d[date.getDay()]} ${pad(date.getDate())}/${pad(date.getMonth())}`
+  return `${d[date.getDay()]} ${pad(date.getDate())}/${pad(date.getMonth() + 1)}`
 }
 
 const datesEqual = (d1, d2) => d1.getDate() == d2.getDate() &&

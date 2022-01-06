@@ -1,4 +1,4 @@
-import { parseSchedules, getScheduleForDate, parseDate, getFirstNextTimeIdx, datesEqual } from "./main.js"
+import { parseSchedules, getScheduleForDate, parseDate, getFirstNextTimeIdx, datesEqual } from "./lib.js"
 import { readFileSync } from "fs"
 
 const runTests = (tests) =>
