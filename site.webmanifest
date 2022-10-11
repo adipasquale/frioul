@@ -1,0 +1,23 @@
+{
+  "name" : "Horaires Navette Frioul",
+  "description" : "Horaires de la navette Frioul - Vieux Port de Marseille, lisibles et hors-ligne",
+  "short_name" : "Frioul",
+  "icons": [
+    {
+      "src": "/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "display": "standalone",
+  "theme_color" : "#d9dae1",
+  "background_color" : "#4535f6",
+  "scope" : "/",
+  "start_url" : "/",
+  "lang": "fr"
+}

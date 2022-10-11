@@ -5,7 +5,7 @@
       {
         "from": "26/09/2022",
         "until": "21/10/2022",
-        "days": "weekdays"
+        "days": "weekend"
       }
     ],
     "times": [
@@ -57,7 +57,7 @@
       {
         "from": "26/09/2022",
         "until": "21/10/2022",
-        "days": "weekend"
+        "days": "weekdays"
       }
     ],
     "times": [
