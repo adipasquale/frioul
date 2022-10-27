@@ -3,9 +3,9 @@
     "name": "Service intensif",
     "ranges": [
       {
-        "from": "26/09/2022",
-        "until": "21/10/2022",
-        "days": "weekend"
+        "from": "17/12/2022",
+        "until": "31/12/2022",
+        "days": "all"
       }
     ],
     "times": [
@@ -55,9 +55,9 @@
     "name": "Service réduit",
     "ranges": [
       {
-        "from": "26/09/2022",
-        "until": "21/10/2022",
-        "days": "weekdays"
+        "from": "07/11/2022",
+        "until": "16/12/2022",
+        "days": "all"
       }
     ],
     "times": [
