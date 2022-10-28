@@ -3,6 +3,11 @@
     "name": "Service intensif",
     "ranges": [
       {
+        "from": "22/10/2022",
+        "until": "06/11/2022",
+        "days": "all"
+      },
+      {
         "from": "17/12/2022",
         "until": "31/12/2022",
         "days": "all"
