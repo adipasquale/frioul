@@ -6,6 +6,7 @@ const parseDate = (dateStr) => {
 const parseRange = (range) => {
   range.from = parseDate(range.from)
   range.until = parseDate(range.until)
+  range.until.setDate(range.until.getDate() + 1)
 }
 
 const parseSchedules = (rawSchedulesText) => {
@@ -17,8 +18,9 @@ const parseSchedules = (rawSchedulesText) => {
 }
 
 const dateCoveredByRange = (date, range) => {
-  const daysType = [6, 0].includes(date.getDay(date)) ? "weekend" : "weekdays"
-  return date >= range.from  && date <= range.until && ["all", daysType].includes(range.days)
+  date >= range.from
+    && date <= range.until
+    && ["all", range.daysType].includes(range.days)
 }
 
 const getScheduleForDate = (schedules, date) =>
@@ -28,8 +30,8 @@ const getScheduleForDate = (schedules, date) =>
 
 const timeStrIsAfterDate = (timeStr, date) => {
   const [hour, minutes] = timeStr.split(" ")[0].split("h").map(i => parseInt(i, 10))
-  return (hour == date.getHours()  && minutes >= date.getMinutes()) ||
-          hour > date.getHours()
+  return (hour == date.getHours() && minutes >= date.getMinutes()) ||
+    hour > date.getHours()
 }
 
 const getFirstNextTimeIdx = (times, date) => {

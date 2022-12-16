@@ -1,6 +1,6 @@
 import { parseSchedules, getScheduleForDate, getFirstNextTimeIdx, dateToStrFR, datesEqual } from "./lib.js"
 
-if('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js');
 };
 
@@ -14,7 +14,7 @@ const setDate = date => {
   const nextIndexes = schedule.times.map(t => getFirstNextTimeIdx(t, date))
   const isToday = datesEqual(new Date(), date)
   tbody.innerHTML = ""
-  for(let i=0; i < maxLength; i++) {
+  for (let i = 0; i < maxLength; i++) {
     if (isToday && i < nextIndexes[0] && i < nextIndexes[1]) {
       if (tbody.innerHTML == "") {
         tbody.innerHTML = "<tr><td>...</td><td>...</td></tr>"
@@ -34,7 +34,7 @@ fetch("./schedules.json")
   .then(rawSchedulesText => {
     schedules = parseSchedules(rawSchedulesText)
     setDate(currentDate)
-})
+  })
 
 document.querySelectorAll(".js-change-date").forEach(elt =>
   elt.addEventListener("click", (e) => {
