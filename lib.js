@@ -17,11 +17,11 @@ const parseSchedules = (rawSchedulesText) => {
   return schedules
 }
 
-const dateCoveredByRange = (date, range) => {
-  date >= range.from
-    && date <= range.until
-    && ["all", range.daysType].includes(range.days)
-}
+const dateCoveredByRange = (date, range) =>
+  date >= range.from &&
+  date <= range.until &&
+  (range.days == "all"
+    || (range.days == "weekend" && [6, 0].includes(date.getDay())))
 
 const getScheduleForDate = (schedules, date) =>
   schedules.find(schedule =>
