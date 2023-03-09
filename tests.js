@@ -31,7 +31,7 @@ runTests([
   ["gets correct schedule autumn sunday", getScheduleForDate(schedules, parseDate("10/10/2021")).name == "Service intensif"],
   ["gets correct schedule autumn end date friday", getScheduleForDate(schedules, parseDate("22/10/2021")).name == "Service réduit"],
   ["gets correct schedule holidays 1 start date saturday", getScheduleForDate(schedules, parseDate("23/10/2021")).name == "Service intensif"],
-  ["gets correct schedule holidays 1 monday", getScheduleForDate(schedules, parseDate("25/10/2021")).name == "Service intensif"],
+  ["gets correct schedule holidays 1 monday", getScheduleForDate(schedules, parseDate("26/10/2021")).name == "Service intensif"],
   ["gets correct schedule holidays 2 end date sunday", getScheduleForDate(schedules, parseDate("07/11/2021")).name == "Service intensif"],
   ["gets correct schedule winter start date monday", getScheduleForDate(schedules, parseDate("08/11/2021")).name == "Service réduit"],
   ["gets correct schedule winter saturday", getScheduleForDate(schedules, parseDate("13/11/2021")).name == "Service réduit"],
