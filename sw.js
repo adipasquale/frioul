@@ -1,4 +1,4 @@
-const cacheName = 'frioul-26';
+const cacheName = 'frioul-27';
 
 const cacheFiles = [
   "./app.js",
